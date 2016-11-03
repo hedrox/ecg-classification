@@ -3,11 +3,12 @@ from keras.models import Sequential
 from keras.layers import Activation, Dense, Flatten
 import os
 import csv
+import random
 from collections import defaultdict
 
 dataset_files = os.listdir('datasets')
 
-data = defaultdict(list)
+data = []
 
 for record in dataset_files:
     with open(record, 'r') as record_file:
@@ -15,8 +16,12 @@ for record in dataset_files:
         # skip headers
         reader.next()
         reader.next()
+        record_data = []
         for row in reader:
-            data[record].append(float(row[1]))
+            record_data.append(float(row[1]))
+        data.append(record_data)
+
+random.shuffle(data)
 
 nb_filters = 32
 
