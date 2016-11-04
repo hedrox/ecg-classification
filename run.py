@@ -6,24 +6,23 @@ import csv
 import random
 from collections import defaultdict
 
-data = []
+def process_data():
+    with open('datasets/preprocessed.csv', 'w') as write_record_file:
+        csvwriter = csv.writer(write_record_file, delimiter=',')
+        csvwriter.writerow(['label', 'value'])
+        for subdir, _, files in os.walk('datasets/raw'):
+            label = 0 if 'arrhythmia' in subdir else 1
+            for record in files:
+                if record.endswith('.csv'):
+                    with open('{}/{}'.format(subdir, record), 'r') as read_record_file:
+                        reader = csv.reader(read_record_file)
+                        # skip headers
+                        reader.next()
+                        reader.next()
+                        for row in reader:
+                            csvwriter.writerow([label, row[1]])
 
-for subdir, _, files in os.walk('datasets'):
-    label = 0 if 'arrhythmia' in subdir else 1
-    for record in files:
-        if record.endswith('.csv'):
-            with open(record, 'r') as record_file:
-                reader = csv.reader(record_file)
-                # skip headers
-                reader.next()
-                reader.next()
-                record_data = []
-                for row in reader:
-                    record_data.append(float(row[1]))
-                data.append((record_data, label))
-
-random.shuffle(data)
-
+process_data()
 nb_filters = 32
 
 model = Sequential()
