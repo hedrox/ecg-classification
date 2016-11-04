@@ -6,20 +6,21 @@ import csv
 import random
 from collections import defaultdict
 
-dataset_files = os.listdir('datasets')
-
 data = []
 
-for record in dataset_files:
-    with open(record, 'r') as record_file:
-        reader = csv.reader(record_file)
-        # skip headers
-        reader.next()
-        reader.next()
-        record_data = []
-        for row in reader:
-            record_data.append(float(row[1]))
-        data.append(record_data)
+for subdir, _, files in os.walk('datasets'):
+    label = 0 if 'arrhythmia' in subdir else 1
+    for record in files:
+        if record.endswith('.csv'):
+            with open(record, 'r') as record_file:
+                reader = csv.reader(record_file)
+                # skip headers
+                reader.next()
+                reader.next()
+                record_data = []
+                for row in reader:
+                    record_data.append(float(row[1]))
+                data.append((record_data, label))
 
 random.shuffle(data)
 
