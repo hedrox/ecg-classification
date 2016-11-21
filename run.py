@@ -29,9 +29,8 @@ for _ in range(arrhy_len):
     if not (counter % batch_size):
         X_train.append(inter_X_train)
         y_train.append(inter_y_train)
-        inter_x_train = []
+        inter_X_train = []
         inter_y_train = []
-        counter = 0
 
     inter_X_train.append(np.asarray(arrhy_data[i:i+500]))
     inter_y_train.append(0)
@@ -40,14 +39,32 @@ for _ in range(arrhy_len):
     i += 500
 
 validation_size = int(0.1  * len(X_train))
-# X_test = np.asarray(X_train[:-validation_size])
-# y_test = np.asarray(y_train[:-validation_size])
 
+# remove the bugged batch
+X_train.pop(0)
+y_train.pop(0)
+
+# split training and testing sets
 X_train, X_test = np.split(X_train, [len(X_train)-validation_size])
 y_train, y_test = np.split(y_train, [len(y_train)-validation_size])
 
+# checking batch lengths
+for batch in X_train:
+    if len(batch) != 16:
+        print("uneven batch with len: {}".format(len(batch)))
+    for example in batch:
+        if len(example) != 500:
+            print("uneven example with len: {}".format(len(example)))
+
+
+# shape = (X_train.shape[0], 16, 500)
+shape = X_train.shape[1:]
+
+# in numpy if arrays are not the same shape they will not appear in the .shape method
+print("shape: {}".format(shape))
+
 model = Sequential()
-model.add(Convolution1D(nb_filters, 3, input_shape=X_train.shape[1:], activation='relu'))
+model.add(Convolution1D(nb_filters, 3, input_shape=shape, activation='relu'))
 model.add(Dropout(0.25))
 model.add(Convolution1D(nb_filters, 3, activation='relu'))
 model.add(Dropout(0.25))
