@@ -24,3 +24,9 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 ### Remarks
 * Old implementation can be found in the old_keras_impl directory, but as far as I know it doesn't work.
 * Still needs more optimization(try different hyperparameters)
+
+### TODO:
+- [ ] Add RNN/ResNet models
+- [ ] Add precision and recall metrics
+- [ ] Add more diseases
+
