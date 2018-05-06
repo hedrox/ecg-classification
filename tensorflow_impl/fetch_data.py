@@ -4,6 +4,19 @@ import os
 import csv
 import random
 import subprocess
+import argparse
+
+par = argparse.ArgumentParser(description="Download and process Physionet Datasets")
+
+par.add_argument("-dl", nargs="+",
+                 dest="dataset_list",
+                 default=[],
+                 choices=["nsrdb", "apnea-ecg", "mitdb", "afdb", "svdb"],
+                 help="The list of datasets to download")
+
+args = par.parse_args()
+dataset_list = args.dataset_list
+
 
 def fetch_data():
     """
@@ -77,13 +90,21 @@ def fetch_data():
 
         print("rdsamp installed check failed")
         return False
-            
 
+    def remove_unwanted_datasets():
+        if dataset_list:
+            unwanted_ds = physionet.keys() - dataset_list
+            for ds in unwanted_ds:
+                physionet.pop(ds, None)
+
+
+    remove_unwanted_datasets()
     check_folder_existance()
     if not rdsamp_installed():
         sys.exit(1)
 
     for database, samples in physionet.items():
+        print("Downloading {}".format(database))
         database_dir = os.path.join(dataset_dir, database)
         for sample in samples:
             csv_file_path = os.path.join(database_dir, sample) + ".csv"
