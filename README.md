@@ -3,8 +3,8 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 
 ### Requirements
 1. Python 3
-2. tensorflow/tensorflow-gpu 1.8.0
-3. wfdb 10.6.0
+2. tensorflow/tensorflow-gpu (tested with version 1.12.0)
+3. wfdb (tested with version 10.6.1)
 
 ### Usage
  - If you need to download the datasets install [wfdb](https://www.physionet.org/physiotools/wfdb.shtml)
@@ -24,6 +24,7 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 ### Remarks
 * Old implementation can be found in the old_keras_impl directory, but as far as I know it doesn't work.
 * Still needs more optimization(try different hyperparameters)
+
 
 ### TODO
 - [ ] Add RNN/ResNet models

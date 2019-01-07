@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import os, sys
 import csv
 import random
 import subprocess
@@ -85,7 +85,7 @@ def fetch_data():
             return True
         except OSError as e:
             if e.errno == os.errno.ENOENT:
-                print("rdsamp not installed")
+                print("rdsamp not installed, link to the installation guide in the README")
                 return False
 
         print("rdsamp installed check failed")
