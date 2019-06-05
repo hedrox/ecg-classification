@@ -123,7 +123,7 @@ class CNN(object):
             dataset_len.append(len(dataset))
 
         validation_size = int(0.1 * sum(dataset_len))
-        
+
         print("Validation size: {}".format(validation_size))
         print("Total samples: {}".format(sum(dataset_len)))
         print("Heart diseases: {}".format(', '.join(heart_diseases)))

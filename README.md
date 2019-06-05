@@ -3,7 +3,7 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 
 ### Requirements
 1. Python 3
-2. tensorflow/tensorflow-gpu (tested with version 1.12.0)
+2. tensorflow/tensorflow-gpu (tested with version 1.13.1)
 3. wfdb (tested with version 10.6.1)
 
 ### Usage
@@ -30,4 +30,5 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 - [ ] Add RNN/ResNet models
 - [ ] Add precision and recall metrics
 - [ ] Add more diseases
+- [ ] Tensorflow 2.0
 
