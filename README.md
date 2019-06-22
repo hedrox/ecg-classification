@@ -28,7 +28,7 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 
 ### TODO
 - [ ] Add RNN/ResNet models
-- [ ] Add precision and recall metrics
+- [x] Add precision and recall metrics
 - [ ] Add more diseases
-- [ ] Tensorflow 2.0
+- [x] Tensorflow 2.0
 

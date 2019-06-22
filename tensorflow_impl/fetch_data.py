@@ -148,6 +148,7 @@ def process_data():
             for record in os.listdir(record_dir):
                 if record.endswith('.csv'):
                     record_path = os.path.join(record_dir, record)
+
                     with open(record_path) as read_raw_file:
                         reader = csv.reader(read_raw_file)
                         # skip headers
