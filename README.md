@@ -4,13 +4,16 @@ This project aims to use machine learning algorithms(emphasis on Deep Learning) 
 
 ### Requirements
 1. Python 3
-2. tensorflow/tensorflow-gpu (cnn.py tested with 1.13.1 and cnn_tf2.py tested with 2.0.0-beta0)
-3. wfdb (tested with version 10.6.1)
+2. tensorflow/tensorflow-gpu (cnn.py tested with 1.13.1 and cnn_tf2.py tested with 2.5.0)
+3. wfdb (tested with version 10.6.2)
 
+
+### Wfdb dataset setup
+ - You can find the full wfdb documentation [here](https://www.physionet.org/content/wfdb)
+ - After downloading the wfdb tool and installing it, add the bin/rdsamp to your PATH for the fetch_data.py script to use it
 
 ### Usage
- - In order to download the datasets install [wfdb](https://www.physionet.org/physiotools/wfdb.shtml)
- - After wfdb is available generate the datasets using:
+ - After the wfdb command is available generate the datasets using:
     ```sh
     $ python fetch_data.py
     ```
