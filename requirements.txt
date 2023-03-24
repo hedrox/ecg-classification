@@ -1,2 +1,2 @@
-tensorflow==1.15.5
+tensorflow==2.11.1
 scikit-learn
